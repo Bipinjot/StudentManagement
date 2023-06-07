@@ -23,6 +23,17 @@ public List<Result> getAllResults(){
     resultRepository.findAll().forEach(results::add);
     return results;
 }
+    public List<Result> getAllResultsByUserId(int userId){
+        List<Result> results = new ArrayList<>();
+        resultRepository.findResultsByUserId(userId).forEach(results::add);
+        return results;
+    }
+
+    public List<Result> getAllResultsByCourseId(int courseId){
+        List<Result> results = new ArrayList<>();
+        resultRepository.findResultsByCourseId(courseId).forEach(results::add);
+        return results;
+    }
 
     public Result getResult(int id) {
         Optional<Result> result = resultRepository.findById(id);

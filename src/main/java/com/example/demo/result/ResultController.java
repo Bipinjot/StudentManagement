@@ -14,6 +14,16 @@ public class ResultController {
         return resultService.getAllResults();
     }
 
+    @RequestMapping("/results/user/{userId}")
+    public List<Result> getAllResultsByUserId(@PathVariable int userId){
+        return resultService.getAllResultsByUserId(userId);
+    }
+
+    @RequestMapping("/results/course/{courseId}")
+    public List<Result> getAllResultsByCourseId(@PathVariable int courseId){
+        return resultService.getAllResultsByCourseId(courseId);
+    }
+
     @RequestMapping("/results/{id}")
     public Result getResult(@PathVariable int id){
         return resultService.getResult(id);
