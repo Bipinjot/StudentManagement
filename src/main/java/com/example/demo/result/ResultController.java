@@ -54,22 +54,56 @@ public class ResultController {
     }
 
     @RequestMapping("/results/{id}")
-    public Result getResult(@PathVariable int id){
-        return resultService.getResult(id);
+    public ResponseEntity<Result> getResult(@PathVariable int id){
+        try{
+            Result result = resultService.getResult(id);
+            if (result == null)
+            {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User Result not found by given course id");
+            }
+            return ResponseEntity.ok(result);
+        }
+        catch (Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT)
+                    .body(new Result());
+        }
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/results")
-    public void addResult(@RequestBody Result user){
-        resultService.addResult(user);
+    public ResponseEntity<String> addResult(@RequestBody Result user){
+        try {
+            resultService.addResult(user);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Result Added");
+        }
+        catch (Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in adding a new result");
+        }
+
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/results/{id}")
-    public void updateResult(@RequestBody Result user, @PathVariable int id){
-        resultService.updateResult(user, id);
+    public ResponseEntity<String> updateResult(@RequestBody Result user, @PathVariable int id){
+        try {
+            resultService.updateResult(user, id);
+            return ResponseEntity.status(HttpStatus.OK).body("Result Saved");
+        }
+        catch (Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in updating a new result");
+        }
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/results/{id}")
-    public void deleteResult(@PathVariable int id){
-        resultService.deleteResult(id);
+    public ResponseEntity<String> deleteResult(@PathVariable int id){
+        try{
+            resultService.deleteResult(id);
+            return ResponseEntity.status(HttpStatus.OK).body("Result Deleted");
+        }
+        catch (Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in deleting result");
+        }
     }
 }

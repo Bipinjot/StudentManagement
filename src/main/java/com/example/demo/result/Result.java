@@ -19,7 +19,7 @@ public class Result {
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
-    public Result() {
+    public  Result() {
     }
 
     public Result(int id, User user, Course course, String grade) {
