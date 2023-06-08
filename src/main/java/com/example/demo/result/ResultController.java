@@ -15,7 +15,7 @@ import java.util.List;
 public class ResultController {
     @Autowired
     private ResultService resultService;
-    @RequestMapping("/results")
+    @RequestMapping(method = RequestMethod.GET, value="/results")
     public ResponseEntity<List<Result>> getAllResults(){
         try {
             List<Result> result = resultService.getAllResults();
@@ -33,7 +33,7 @@ public class ResultController {
         }
     }
 
-    @RequestMapping("/results/user/{userId}")
+    @RequestMapping(method = RequestMethod.GET, value="/results/user/{userId}")
     public ResponseEntity<List<Result>> getAllResultsByUserId(@PathVariable int userId){
         try {
             List<Result> result = resultService.getAllResultsByUserId(userId);
@@ -51,7 +51,7 @@ public class ResultController {
         }
     }
 
-    @RequestMapping("/results/course/{courseId}")
+    @RequestMapping(method = RequestMethod.GET, value="/results/course/{courseId}")
     public ResponseEntity<List<Result>> getAllResultsByCourseId(@PathVariable int courseId){
         try{
             List<Result> result = resultService.getAllResultsByCourseId(courseId);
@@ -68,7 +68,7 @@ public class ResultController {
         }
     }
 
-    @RequestMapping("/results/{id}")
+    @RequestMapping(method = RequestMethod.GET, value="/results/{id}")
     public ResponseEntity<Result> getResult(@PathVariable int id){
         try{
             Result result = resultService.getResult(id);
