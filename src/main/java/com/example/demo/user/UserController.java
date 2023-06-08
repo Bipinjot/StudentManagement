@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,13 +56,12 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CREATED).body("User Added");
         }
         catch (DataIntegrityViolationException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in adding a new result");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in adding a new user");
         }
         catch (Exception e)
         {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in adding a new result");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in adding a new user");
         }
-
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/users/")
@@ -94,6 +92,10 @@ public class UserController {
             else{
                 return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No result found");
             }
+        }
+        catch (DataIntegrityViolationException e)
+        {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User cannot be deleted as user exists in Result");
         }
         catch (Exception e)
         {
