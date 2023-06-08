@@ -44,7 +44,7 @@ public List<Result> getAllResults(){
         resultRepository.save(result);
     }
 
-    public void updateResult(Result result, int id){
+    public void updateResult(Result result){
         resultRepository.save(result);
     }
 
