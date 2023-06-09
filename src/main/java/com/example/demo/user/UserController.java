@@ -57,7 +57,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CREATED).body("User Added");
         }
         catch (DataIntegrityViolationException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in adding a new user");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad parameters");
         }
         catch (Exception e)
         {
@@ -72,7 +72,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CREATED).body("User Saved");
         }
         catch (DataIntegrityViolationException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in updating user");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad parameters");
         }
         catch (Exception e)
         {
