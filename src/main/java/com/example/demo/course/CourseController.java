@@ -39,7 +39,7 @@ public class CourseController {
             Course course = courseService.getCourse(id);
             if (course == null)
             {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Course doesn't exists");
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Course doesn't exist");
             }
             return ResponseEntity.ok(course);
         }
@@ -57,7 +57,7 @@ public class CourseController {
             return ResponseEntity.status(HttpStatus.CREATED).body("Course Added");
         }
         catch (DataIntegrityViolationException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in adding a new course");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Course already exists");
         }
         catch (Exception e)
         {
@@ -74,7 +74,7 @@ public class CourseController {
             return ResponseEntity.status(HttpStatus.CREATED).body("Course Saved");
         }
         catch (DataIntegrityViolationException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in updating course");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Course already exists");
         }
         catch (Exception e)
         {

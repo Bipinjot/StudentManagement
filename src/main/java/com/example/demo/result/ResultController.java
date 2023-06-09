@@ -22,7 +22,7 @@ public class ResultController {
             List<Result> result = resultService.getAllResults();
             if (result.size() <= 0)
             {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User Result not found");
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Result not found");
             }
             return ResponseEntity.ok(result);
         }
