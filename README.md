@@ -52,6 +52,6 @@ mvn clean install
 1. Run the application using the following command:
 java -jar target/StudentManagement-1.0.jar
 
-Alternatively, you can use an IDE like Ine=telliJ or VSCode to run the project directly without the jar.
+Alternatively, you can use an IDE like IntelliJ or VSCode to run the project directly without the jar.
 
 
